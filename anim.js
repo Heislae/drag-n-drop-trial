@@ -1,8 +1,10 @@
-//Make the DIV element draggagle:
-dragElement(document.getElementById("mydiv"));
-changeBgColor(element);
+var element = document.getElementById("mydiv");
 
-var element = document.getElementById(mydiv);
+//Make the DIV element draggagle:
+dragElement(element);
+setInterval(() => {
+    changeBgColor(element);
+}, 1);
 
 function dragElement(elmnt) {
     var pos1 = 0, pos3 = 0;
@@ -47,9 +49,13 @@ function dragElement(elmnt) {
 }
 
 function changeBgColor(elmnt) {
-    var leftOffset = elmnt.style.left;
-    console.log("leftOffset");
-    // if (leftOffset < 700) {
-    //     document.body.style.backgroundColor = "#123456";
-    // }
+    var offSets = elmnt.getBoundingClientRect();
+    var left = offSets.left;
+    console.log(left);
+
+    if (left < 700) {
+        document.body.style.backgroundColor = "#AA00AA";
+    } else if (left > 700) {
+        document.body.style.backgroundColor = "#FFFFFF";
+    }
 }
